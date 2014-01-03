@@ -16,7 +16,7 @@ import com.denolk.depad.core.socket.DSocketClient;
 import com.denolk.depad.core.socket.DSocketHandler;
 import com.denolk.depad.core.views.DGyroView;
 import com.denolk.depad.core.views.ThrottleControlBar;
-import com.denolk.dpad.R;
+import com.denolk.depad.R;
 
 public class MainActivity extends Activity implements DSensorHandler, DSocketHandler, CompoundButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
 
@@ -86,16 +86,6 @@ public class MainActivity extends Activity implements DSensorHandler, DSocketHan
 		//todo: on-off maybe?
 	}
 
-	@Override
-	public void notifyRotationChanged(DPadData data) {
-		sendGyroData(data);
-	}
-
-	@Override
-	public void notifyOrientationChanged(DPadData data) {
-		sendGyroData(data);
-	}
-
 	private void sendGyroData(DPadData data) {
 		_txtRoll.setText(data.Roll + "");
 		_txtPitch.setText(data.Pitch + "");
@@ -124,12 +114,12 @@ public class MainActivity extends Activity implements DSensorHandler, DSocketHan
 			_sensorListener = new DSensorListener(this, this);
 			_socketClient = new DSocketClient(this, _txtHost.getText().toString());
 			_sensorListener.start(Sensor.TYPE_ACCELEROMETER);
-			_socketClient.start();
+//			_socketClient.start();
 		}
 	}
 
 	private void stop() {
-		_socketClient.stop();
+//		_socketClient.stop();
 		_sensorListener.stop();
 		_sensorListener = null;
 		_socketClient = null;

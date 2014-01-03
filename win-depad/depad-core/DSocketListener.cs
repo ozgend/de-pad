@@ -23,6 +23,7 @@ namespace depad_core
             _handler = handler;
             IPAddress ipAddress = Dns.GetHostEntry(handler.Host).AddressList.FirstOrDefault(a => a.AddressFamily == AddressFamily.InterNetwork);
             _tcpListener = new TcpListener(ipAddress, handler.Port);
+            _tcpListener.Server.NoDelay = true;
             Console.WriteLine("++ DSocketListener - initialized on {0}:{1} ", handler.Host, handler.Port);
         }
 
@@ -40,31 +41,30 @@ namespace depad_core
                 Console.WriteLine("++ DSocketListener - start error: " + ex.ToString());
             }
 
-            try
+
+            while (IsRunning)
             {
-                while (IsRunning)
+                try
                 {
                     Thread.Sleep(_sleep);
-                    var client = _tcpListener.AcceptTcpClient();
+                    //var client = _tcpListener.AcceptTcpClient();
+                    var client = _tcpListener.AcceptSocket();
+
                     var bytes = new byte[256];
-                    var stream = client.GetStream();
-                    stream.Read(bytes, 0, bytes.Length);
-
+                    //var stream = client.GetStream();
+                    var stream = client.Receive(bytes);
+                    //stream.Read(bytes, 0, bytes.Length);
                     var serialized = Encoding.ASCII.GetString(bytes, 0, bytes.Length).Trim('\0');
-                    Console.WriteLine("++ DSocketListener - data received= {0}", serialized);
-
                     var data = JsonConvert.DeserializeObject<DPadData>(serialized);
-
                     _handler.DataReceived(data);
-
                 }
-                _tcpListener.Stop();
-                Console.WriteLine("++ DSocketListener - stopped");
+                catch (Exception ex)
+                {
+                    Console.WriteLine("++ DSocketListener - receive error: " + ex.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("++ DSocketListener - receive error: " + ex.ToString());
-            }
+            _tcpListener.Stop();
+            Console.WriteLine("++ DSocketListener - stopped");
         }
 
         public void Stop()

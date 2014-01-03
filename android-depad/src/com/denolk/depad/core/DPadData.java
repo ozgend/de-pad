@@ -20,10 +20,10 @@ public class DPadData {
 		this.PType = PTYPE_ENGINE;
 	}
 
-	public float	Roll;
-	public float	Pitch;
-	public float	Throttle;
-	public int		PType;
+	public float	Roll = 0;
+	public float	Pitch= 0;
+	public float	Throttle= 0;
+	public int		PType= 0;
 
 	@Override
 	public String toString() {

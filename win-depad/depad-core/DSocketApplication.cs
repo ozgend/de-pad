@@ -36,13 +36,13 @@ namespace depad_core
             switch (data.PType)
             {
                 case DPadData.PTYPE_GYROSCOPE:
-                    Console.WriteLine("application - gyroscope = {0}", JsonConvert.SerializeObject(data.Gyroscope()));
+                    Console.WriteLine("++ DSocketApplication - gyroscope = {0}", JsonConvert.SerializeObject(data.Gyroscope()));
                     break;
                 case DPadData.PTYPE_ENGINE:
-                    Console.WriteLine("application - engine = {0}", JsonConvert.SerializeObject(data.Engine()));
+                    Console.WriteLine("++ DSocketApplication - engine = {0}", JsonConvert.SerializeObject(data.Engine()));
                     break;
                 default:
-                    Console.WriteLine("application - unknown data received = {0}", JsonConvert.SerializeObject(data));
+                    Console.WriteLine("++ DSocketApplication - unknown data received = {0}", JsonConvert.SerializeObject(data));
                     break;
             }
         }

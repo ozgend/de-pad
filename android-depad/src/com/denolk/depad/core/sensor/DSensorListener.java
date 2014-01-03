@@ -1,13 +1,13 @@
 package com.denolk.depad.core.sensor;
 
-import com.denolk.depad.core.DPadData;
-import com.denolk.depad.util.Logger;
-
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+
+import com.denolk.depad.core.DPadData;
+import com.denolk.depad.util.Logger;
 
 public class DSensorListener implements SensorEventListener {
 
@@ -20,7 +20,7 @@ public class DSensorListener implements SensorEventListener {
 	}
 
 	public void start(int sensorType) {
-		_sensorManager.registerListener(this, _sensorManager.getDefaultSensor(sensorType), SensorManager.SENSOR_DELAY_GAME);
+		_sensorManager.registerListener(this, _sensorManager.getDefaultSensor(sensorType), SensorManager.SENSOR_DELAY_UI);
 	}
 
 	public void stop() {
@@ -32,7 +32,6 @@ public class DSensorListener implements SensorEventListener {
 		Logger.i("onAccuracyChanged %s data: %d", sensor.getName(), value);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 
@@ -47,21 +46,10 @@ public class DSensorListener implements SensorEventListener {
 				_handler.notifyAccelerometerChanged(data);
 				break;
 
-			case Sensor.TYPE_ROTATION_VECTOR:
-				data = new DPadData(event.values);
-				_handler.notifyRotationChanged(data);
-				break;
-
 			case Sensor.TYPE_GYROSCOPE:
 				data = new DPadData(event.values);
 				_handler.notifyGyroscopeChanged(data);
 				break;
-
-			case Sensor.TYPE_ORIENTATION:
-				data = new DPadData(event.values);
-				_handler.notifyOrientationChanged(data);
-				break;
-
 			default:
 				break;
 		}
