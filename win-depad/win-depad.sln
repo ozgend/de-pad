@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depad-core", "depad-core\depad-core.csproj", "{F8EF89F0-3DCC-4D63-AB4A-509934CB586C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depad-app", "depad-app\depad-app.csproj", "{EA582A17-36BD-4A98-B8D4-296299195621}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "depad-clienttest", "depad-clienttest\depad-clienttest.csproj", "{C7F2AB16-0DBA-4251-8AEC-3084FDD5AB74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8EF89F0-3DCC-4D63-AB4A-509934CB586C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8EF89F0-3DCC-4D63-AB4A-509934CB586C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8EF89F0-3DCC-4D63-AB4A-509934CB586C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8EF89F0-3DCC-4D63-AB4A-509934CB586C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA582A17-36BD-4A98-B8D4-296299195621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA582A17-36BD-4A98-B8D4-296299195621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA582A17-36BD-4A98-B8D4-296299195621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA582A17-36BD-4A98-B8D4-296299195621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F2AB16-0DBA-4251-8AEC-3084FDD5AB74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F2AB16-0DBA-4251-8AEC-3084FDD5AB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F2AB16-0DBA-4251-8AEC-3084FDD5AB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F2AB16-0DBA-4251-8AEC-3084FDD5AB74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

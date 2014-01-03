@@ -1,0 +1,8 @@
+*/bin/*
+*/gen/*
+depad.keystore
+*/packages/*
+*.exe
+*.pdb
+*.dll
+*/obj/*
